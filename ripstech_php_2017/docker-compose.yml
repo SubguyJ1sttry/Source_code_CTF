@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    volumes:
+      - ./html/:/var/www/html/
+      - ./xdebug.ini:/etc/php/7.0/cli/conf.d/20-xdebug.ini
+      - ./xdebug.ini:/etc/php/7.0/apache2/conf.d/20-xdebug.ini
+    ports:
+      - "8000:80"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
